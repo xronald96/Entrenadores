@@ -28,6 +28,24 @@
 .carInfo {
   display: flex;
   flex-direction: column;
-  width: 25%;
-  height: 25%;
+  width: 30%;
+  height: 30%;
+  border-radius: 5px;
+  margin: 1%;
+  border: 1px grey solid;
+  border-right: 1px grey solid;
+}
+.car-body {
+  height: 60%;
+  display: flex;
+  padding: 1%;
+  flex-direction: column;
+}
+.hf-color {
+  background-color: grey;
+  color: white;
+  height: 20%;
+  display: flex;
+  padding: 1%;
+  align-items: center;
 }

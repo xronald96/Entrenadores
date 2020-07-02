@@ -95,7 +95,7 @@
   </div> -->
   <div class="body-card">
     <div class="carInfo" *ngFor="let item of resultData">
-      <div class="car-title">
+      <div class="car-title hf-color">
         <div>{{ item.trainer.name }}</div>
         <div>
           <i matTooltip="Info about the action" class="fas fa-info-circle"></i>
@@ -107,6 +107,7 @@
           {{ client.name }}
         </div>
       </div>
+      <div class="hf-color">{{ item.clients.length }} clientes asignados</div>
     </div>
   </div>
 </div>
