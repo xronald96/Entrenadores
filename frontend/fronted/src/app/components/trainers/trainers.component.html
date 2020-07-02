@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div name="title" class="row">
+    <div class="col-12 d-flex justify-content-center text-center">
+      <h1>Pantalla de Configuración</h1>
+    </div>
+  </div>
+  <div name="body" class="row">
+    <form
+      [formGroup]="trainers"
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      "
+    >
+      <div *ngFor="let control of trainers.controls" class="items">
+        <ng-container [formGroup]="control">
+          <div style="padding-left: 1%;">
+            <label>Entrenador {{ control.get("id").value }}</label>
+          </div>
+          <div class="col-12 d-flex justify-content-center text-center">
+            <label>Nombre: &nbsp;&nbsp;</label
+            ><input style="margin-right: 2%;" formControlName="name" />
+            <label>Valoración:&nbsp;&nbsp; </label>
+            <input
+              type="number"
+              min="0.0"
+              max="5.0"
+              style="margin-right: 2%;"
+              formControlName="reputation"
+            />
+            <label>Plazas disponibles:&nbsp;&nbsp; </label
+            ><input
+              type="number"
+              min="0.0"
+              style="margin-right: 2%;"
+              formControlName="available"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </form>
+    <div class="row">
+      <div class="text-right" style="margin-right: 10%; padding: 1%;">
+        <button (click)="addTraner()" type="button" class="btn btn-primary">
+          Añadir entrenador
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center" style="margin-right: 10%; padding: 1%;">
+        <button (click)="showClients()" type="button" class="btn btn-primary">
+          Ver tabla clientes
+        </button>
+        <button
+          (click)="generateAssassignment()"
+          type="button"
+          class="btn btn-primary"
+        >
+          Calcular resultados
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
