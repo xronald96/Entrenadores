@@ -17,7 +17,7 @@ export class TrainersComponent implements OnInit {
   idsTrainers = 0;
   idsClients = 0;
 
-  result = true;
+  result = false;
   resultData: any = [
     {
       trainer: { id: 1, name: "rerer", reputation: "4", available: 0 },

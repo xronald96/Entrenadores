@@ -96,13 +96,14 @@
   <div class="body-card">
     <div class="carInfo" *ngFor="let item of resultData">
       <div class="car-title hf-color">
-        <div>{{ item.trainer.name }}</div>
-        <div>
-          <i matTooltip="Info about the action" class="fas fa-info-circle"></i>
+        <div>Entrenador {{ item.trainer.id }}</div>
+        <div tooltip="<b>Valoración:</b> {{item.trainer.reputation}} <br> <b>Max clientes: </b>{{item.trainer.available}}">
+           <i class="fas fa-info-circle"></i>
         </div>
       </div>
       <div class="car-body">
-        <label>Clientes: </label>
+        <label>{{ item.trainer.name }}</label>
+        <div>Clientes asignados: </div>
         <div *ngFor="let client of item.clients">
           {{ client.name }}
         </div>
@@ -111,3 +112,5 @@
     </div>
   </div>
 </div>
+
+

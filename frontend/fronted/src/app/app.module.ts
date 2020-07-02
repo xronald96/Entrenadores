@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MatTooltipModule } from "@angular/material/tooltip";
+import { TooltipModule } from 'ng2-tooltip-directive';
 import {
   TrainersComponent,
   ModalComponent,
@@ -26,8 +26,7 @@ import { ResultViewComponent } from "./components/result-view/result-view.compon
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
-    MatTooltipModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,TooltipModule
   ],
   entryComponents: [ModalComponent],
   providers: [],
