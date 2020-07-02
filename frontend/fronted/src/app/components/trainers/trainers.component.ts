@@ -1,7 +1,11 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormControl, FormArray, Validators } from "@angular/forms";
 import { AssassignmentService } from "src/app/services/assassignment.service";
-import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from "@angular/material/dialog";
 @Component({
   selector: "app-trainers",
   templateUrl: "./trainers.component.html",
@@ -12,6 +16,21 @@ export class TrainersComponent implements OnInit {
   clients = new FormArray([]);
   idsTrainers = 0;
   idsClients = 0;
+
+  result = true;
+  resultData: any = [
+    {
+      trainer: { id: 1, name: "rerer", reputation: "4", available: 0 },
+      clients: [{ id: 1, name: "Juan", reputationTrainer: 8.65 }],
+    },
+    {
+      trainer: { id: 0, name: "ronald", reputation: "3", available: 0 },
+      clients: [
+        { id: 0, name: "Ronald", reputationTrainer: 5.6 },
+        { id: 2, name: "Pedro", reputationTrainer: 2.3 },
+      ],
+    },
+  ];
   constructor(
     private assassignmentService: AssassignmentService,
     private dialog: MatDialog
@@ -33,7 +52,9 @@ export class TrainersComponent implements OnInit {
   ngOnInit() {
     this.populatingClients();
   }
-
+  back() {
+    this.result = false;
+  }
   showClients() {
     const dialogRef = this.dialog.open(ModalComponent, {
       data: this.clients,
@@ -45,10 +66,18 @@ export class TrainersComponent implements OnInit {
     });
   }
   generateAssassignment() {
-    this.assassignmentService.assignmentClientsToTrainers({
-      trainers: this.trainers.value,
-      clients: [],
-    });
+    this.trainers.updateValueAndValidity();
+    console.log("esto antes de enviar", this);
+    this.assassignmentService
+      .assignmentClientsToTrainers({
+        trainers: this.trainers.value,
+        clients: this.clients.value,
+      })
+      .subscribe((res) => {
+        console.log("getting al reponse", res);
+        this.resultData = res;
+        this.result = true;
+      });
   }
   populatingClients() {
     let client = new FormGroup({
@@ -90,9 +119,10 @@ export class TrainersComponent implements OnInit {
   templateUrl: "./model-template.html",
 })
 export class ModalComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log("muestro data", this.data);
-  }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<ModalComponent>
+  ) {}
 
   addClient() {
     let client = new FormGroup({
@@ -105,5 +135,9 @@ export class ModalComponent {
       ]),
     });
     this.data.push(client);
+  }
+  save() {
+    this.data.updateValueAndValidity();
+    this.dialogRef.close();
   }
 }

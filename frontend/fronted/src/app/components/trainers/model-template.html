@@ -1,46 +1,55 @@
-<div name="body" class="row">
-  <form
-    [formGroup]="data"
-    style="
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-    "
-  >
+<div name="body" class="body">
+  <form [formGroup]="data" class="form-style">
     <div
+      class="form-group"
       *ngFor="let control of data.controls"
-      class="items"
-      style="width: 100% !important;"
+      style="
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        border-bottom: 1px solid;
+      "
     >
-      <ng-container [formGroup]="control">
-        <div>
-          <label>Entrenador {{ control.get("id").value }}</label>
+      <form [formGroup]="control">
+        <label for="exampleInputEmail1"
+          >Cliente {{ control.get("id").value }}</label
+        >
+        <div class="form-group row">
+          <label for="Name" class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-4">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="name"
+              formControlName="name"
+            />
+          </div>
+          <label for="Name" class="col-sm-2 col-form-label"
+            >Importacia entrenador</label
+          >
+          <div class="col-sm-4">
+            <input
+              type="text"
+              class="form-control"
+              id="reputationTrainer"
+              formControlName="reputationTrainer"
+            />
+          </div>
         </div>
-        <div>
-          <label>Nombre: &nbsp;&nbsp;</label
-          ><input style="margin-right: 2%;" formControlName="name" />
-          <label>Valoración:&nbsp;&nbsp; </label>
-          <input
-            type="number"
-            min="0.0"
-            max="5.0"
-            style="margin-right: 2%;"
-            formControlName="reputationTrainer"
-          />
-        </div>
-      </ng-container>
+      </form>
     </div>
   </form>
   <div class="row">
-    <div class="text-right" style="margin-right: 10%; padding: 1%;">
+    <div
+      class="text-right"
+      style="padding: 1%; display: flex; justify-content: space-evenly;"
+    >
       <button (click)="addClient()" type="button" class="btn btn-primary">
-        Guardar
+        Añadir cliente
       </button>
-    </div>
-    <div class="text-right" style="margin-right: 10%; padding: 1%;">
-      <button (click)="addClient()" type="button" class="btn btn-primary">
-        Añadir cliene
+      <button (click)="save()" type="button" class="btn btn-primary">
+        Guardar y cerrar
       </button>
     </div>
   </div>
