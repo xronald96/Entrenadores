@@ -17,7 +17,7 @@ export class TrainersComponent implements OnInit {
   idsTrainers = 0;
   idsClients = 0;
 
-  result = false;
+  result = true;
   resultData: any = [
     {
       trainer: { id: 1, name: "rerer", reputation: "4", available: 0 },
@@ -67,6 +67,7 @@ export class TrainersComponent implements OnInit {
   }
   generateAssassignment() {
     this.trainers.updateValueAndValidity();
+    this.resultData = null;
     console.log("esto antes de enviar", this);
     this.assassignmentService
       .assignmentClientsToTrainers({

@@ -1,4 +1,7 @@
-<div class="container-fluid" *ngIf="!result">
+<div
+  style="display: flex; flex-direction: column; height: 100%; width: 86.4%;"
+  *ngIf="!result"
+>
   <div name="title" class="row">
     <div class="col-12 d-flex justify-content-center text-center">
       <h1>Pantalla de Configuración</h1>
@@ -16,7 +19,7 @@
           border-bottom: 1px solid;
         "
       >
-        <form [formGroup]="control">
+        <form [formGroup]="control" style="margin-right: 1%; margin-left: 1%;">
           <label for="exampleInputEmail1"
             >Entrenador {{ control.get("id").value }}</label
           >
@@ -57,14 +60,19 @@
         </form>
       </div>
     </form>
-    <div class="row">
+    <div>
       <div class="text-right" style="padding: 1%;">
-        <button (click)="addTraner()" type="button" class="btn btn-primary">
+        <button
+          stlye="margin-right: 2% !important;"
+          (click)="addTraner()"
+          type="button"
+          class="btn btn-primary"
+        >
           Añadir entrenador
         </button>
       </div>
     </div>
-    <div class="row">
+    <div>
       <div
         class="text-center"
         style="padding: 1%; display: flex; justify-content: space-evenly;"
@@ -84,33 +92,164 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="result">
-  <div name="title" class="row">
-    <div class="col-12 d-flex justify-content-center text-center">
-      <h1>Pantalla de resultados</h1>
-    </div>
-  </div>
-  <!-- <div matTooltip="Info about the action">
-    hols <i matTooltip= {{"Valoración" + item.reputation}} class="fas fa-info-circle"></i>
-  </div> -->
-  <div class="body-card">
-    <div class="carInfo" *ngFor="let item of resultData">
-      <div class="car-title hf-color">
-        <div>Entrenador {{ item.trainer.id }}</div>
-        <div tooltip="<b>Valoración:</b> {{item.trainer.reputation}} <br> <b>Max clientes: </b>{{item.trainer.available}}">
-           <i class="fas fa-info-circle"></i>
+<mat-tab-group mat-align-tabs="start" *ngIf="result">
+  <mat-tab label="Entrenadores">
+    <div
+      style="display: flex; flex-direction: column; height: 100%; width: 86.4%;"
+    >
+      <div name="title" style="display: flex;">
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            font-size: 16px;
+            align-items: center;
+          "
+        >
+          Pantalla de resultados
+        </div>
+        <div
+          (click)="result = false"
+          style="
+            font-size: 24px;
+            margin: 1%;
+
+            align-self: center;
+          "
+        >
+          <i class="fas fa-arrow-circle-left"></i>
         </div>
       </div>
-      <div class="car-body">
-        <label>{{ item.trainer.name }}</label>
-        <div>Clientes asignados: </div>
-        <div *ngFor="let client of item.clients">
-          {{ client.name }}
+
+      <div class="body-card">
+        <div class="carInfo" *ngFor="let item of resultData">
+          <div class="car-title hf-color">
+            <div>Entrenador {{ item.trainer.id }}</div>
+            <div
+              tooltip="<b>Valoración:</b> {{
+                item.trainer.reputation
+              }} <br> <b>Max clientes: </b>{{ item.trainer.available }}"
+            >
+              <i class="fas fa-info-circle"></i>
+            </div>
+          </div>
+          <div class="car-body">
+            <label>{{ item.trainer.name }}</label>
+            <div>Clientes asignados:</div>
+            <div *ngFor="let client of item.clients">
+              {{ client.name }}
+            </div>
+          </div>
+          <div class="hf-color">
+            {{ item.clients.length }} clientes asignados
+          </div>
+        </div>
+        <div class="carInfo" *ngFor="let item of resultData">
+          <div class="car-title hf-color">
+            <div>Entrenador {{ item.trainer.id }}</div>
+            <div
+              tooltip="<b>Valoración:</b> {{
+                item.trainer.reputation
+              }} <br> <b>Max clientes: </b>{{ item.trainer.available }}"
+            >
+              <i class="fas fa-info-circle"></i>
+            </div>
+          </div>
+          <div class="car-body">
+            <label>{{ item.trainer.name }}</label>
+            <div>Clientes asignados:</div>
+            <div *ngFor="let client of item.clients">
+              {{ client.name }}
+            </div>
+          </div>
+          <div class="hf-color">
+            {{ item.clients.length }} clientes asignados
+          </div>
+        </div>
+        <div class="carInfo" *ngFor="let item of resultData">
+          <div class="car-title hf-color">
+            <div>Entrenador {{ item.trainer.id }}</div>
+            <div
+              tooltip="<b>Valoración:</b> {{
+                item.trainer.reputation
+              }} <br> <b>Max clientes: </b>{{ item.trainer.available }}"
+            >
+              <i class="fas fa-info-circle"></i>
+            </div>
+          </div>
+          <div class="car-body">
+            <label>{{ item.trainer.name }}</label>
+            <div>Clientes asignados:</div>
+            <div *ngFor="let client of item.clients">
+              {{ client.name }}
+            </div>
+          </div>
+          <div class="hf-color">
+            {{ item.clients.length }} clientes asignados
+          </div>
+        </div>
+        <div class="carInfo" *ngFor="let item of resultData">
+          <div class="car-title hf-color">
+            <div>Entrenador {{ item.trainer.id }}</div>
+            <div
+              tooltip="<b>Valoración:</b> {{
+                item.trainer.reputation
+              }} <br> <b>Max clientes: </b>{{ item.trainer.available }}"
+            >
+              <i class="fas fa-info-circle"></i>
+            </div>
+          </div>
+          <div class="car-body">
+            <label>{{ item.trainer.name }}</label>
+            <div>Clientes asignados:</div>
+            <div *ngFor="let client of item.clients">
+              {{ client.name }}
+            </div>
+          </div>
+          <div class="hf-color">
+            {{ item.clients.length }} clientes asignados
+          </div>
         </div>
       </div>
-      <div class="hf-color">{{ item.clients.length }} clientes asignados</div>
     </div>
-  </div>
-</div>
-
-
+  </mat-tab>
+  <mat-tab label="Valoración del conjunto">
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        width: 85%;
+        margin: 1%;
+      "
+    >
+      <p>
+        Para esta unir a clientes con sus respectivos entrenadores hemos tenido
+        en cuenta lo siguiente:
+      </p>
+      <p>
+        - La importacion que tiene para el cliente el tener un entrenador mejor
+        o peor (Esta importancia la hemos tenido en cuneta como si fuese dinero
+        cuan mas importante mas dinero pagara).
+      </p>
+      <p>
+        - La valoracion del entrendor (Esta valorcioón la hemos tomado como una
+        valaracion que la gente le da a dicho entrenador).
+      </p>
+      <p>
+        - Es posible que haya entrenadores que no tenga asignados clientes. Pero
+        como hemos comentado antes cuanto más pague un cliente se le intentara
+        dar el mejor entrenador disponible.
+      </p>
+      <p>
+        - Por otro lado puede surguir una problematica y es que se venga un
+        cliente nuevo que pague mucho más dinero que otro y solo tengamos
+        entrenadores malos. Este problema no esta planteado en el enunciado
+        segun lo interpreato pero lo que hariamos seria redefinir la asignación
+        que con el sistema actual se podria hacer o decirle al cliente que ahora
+        mismo solo nos quedan entrenadores con X valoración
+      </p>
+    </div>
+  </mat-tab>
+</mat-tab-group>
